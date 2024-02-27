@@ -1,10 +1,11 @@
-type props = { imageURL: string };
+type props = { image: string; onClick: VoidFunction };
 
-export default function ImageButton({ imageURL }: props) {
+export default function ImageButton({ image, onClick }: props) {
+  // export default function ImageButton({ imageURL, event }: props) {
   return (
     <>
-      <button>
-        <img src={imageURL} alt="not showing lol" />
+      <button onClick={onClick}>
+        <img width={"50px"} height={"50px"} src={image} alt="not showing lol" />
       </button>
     </>
   );
