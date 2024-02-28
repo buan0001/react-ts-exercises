@@ -1,3 +1,5 @@
+
+
 type props = { image: string; onClick: VoidFunction };
 
 export default function ImageButton({ image, onClick }: props) {

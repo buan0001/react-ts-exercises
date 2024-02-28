@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BaseProps } from "../types";
+import { getNextId } from "../data/data";
 const SERVER_URL = "http://localhost:8000/users";
 const DELAY = 500;
 
@@ -29,16 +30,26 @@ export default function FetchDemo1({ title }: BaseProps) {
   //Call fetchUser(..) immediately when the component is mounted
 
   useEffect(() => {
-    fetchUser(userId).then(response => {
+    const controller = new AbortController()
+
+    fetchUser(userId, {signal: controller.signal}).then(response => {
       setUser(response);
+      setLoading(false)
       console.log(response);
-    });
+      controller.abort()
+    }).catch(e =>{ console.error(e);
+    (e);
+    })
+    
+    return () => controller.abort()
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <h2>{title}</h2>
+      <h3>{loading && "Loading"}</h3>
       {user && JSON.stringify(user)}
       <br />
       <button onClick={fetchNextUser}>Next User</button>

@@ -18,7 +18,9 @@ export default function UseEffectDemo({ title }: BaseProps) {
       setCount(prev => prev + 1);
       console.log(count);
     }, 1000);
+    // "clean up" function - stops the effect again
     return () => clearInterval(i);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [runCount]);
 
   return (

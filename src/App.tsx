@@ -9,6 +9,7 @@ import StateDemo3 from "./exercises/StateDemo3";
 import UseEffectDemo from "./exercises/UseEffect1";
 import FetchDemo1 from "./exercises/FetchDemo1";
 import EventDemo1 from "./exercises/EventDemo";
+import LiftingState from "./exercises/LiftingState";
 
 
 export default function App() {
@@ -35,10 +36,11 @@ export default function App() {
             {selectedView == "FormsUncontrolled" ? <FormUncontrolled title="Forms demo1"></FormUncontrolled> : null}
             {selectedView == "StateDemo1" ? <StateDemo1 title="StateDemo1"></StateDemo1> : null}
             {selectedView == "StateDemo2" ? <StateDemo2 title="StateDemo2"></StateDemo2> : null}
-            {selectedView == "StateDemo3" ? <StateDemo3 title="StateDemo2"></StateDemo3> : null}
-            {selectedView == "UseEffect1" ? <UseEffectDemo title="StateDemo2"></UseEffectDemo> : null}
-            {selectedView == "FetchDemo1" ? <FetchDemo1 title="StateDemo2"></FetchDemo1> : null}
+            {selectedView == "StateDemo3" ? <StateDemo3 title="StateDemo3"></StateDemo3> : null}
+            {selectedView == "UseEffect1" ? <UseEffectDemo title="UseEffect1"></UseEffectDemo> : null}
+            {selectedView == "FetchDemo1" ? <FetchDemo1 title="FetchDemo1"></FetchDemo1> : null}
             {selectedView == "EventDemo" ? <EventDemo1 title="Event demo"></EventDemo1> : null}
+            {selectedView == "LiftingState" ? <LiftingState title="LiftingState"></LiftingState> : null}
             {/**Add the exercise components you create for each exercise using the key you used for the matching button  */}
           </div>
         </div>
@@ -52,7 +54,7 @@ type ButtonProps = {
 };
 
 const Buttons = (props: ButtonProps) => {
-  const { onSelected: handleSelected, btnStyle: btnStyle } = props;
+const { onSelected: handleSelected, /*btnStyle: btnStyle*/ } = props;
   return (
     <>
       <button className="btn-w100" onClick={() => handleSelected("info")}>
@@ -66,25 +68,28 @@ const Buttons = (props: ButtonProps) => {
         List demo
       </button>
       <button className="btn-w100" onClick={() => handleSelected("EventDemo")}>
-        List demo
+        Event Demo
       </button>
       <button className="btn-w100" onClick={() => handleSelected("FormsUncontrolled")}>
         Form demo
       </button>
       <button className="btn-w100" onClick={() => handleSelected("StateDemo1")}>
-      StateDemo1
+        State Demo1
       </button>
       <button className="btn-w100" onClick={() => handleSelected("StateDemo2")}>
-      StateDemo2
+        State Demo2
       </button>
       <button className="btn-w100" onClick={() => handleSelected("StateDemo3")}>
-      StateDemo3
+        State Demo3
       </button>
       <button className="btn-w100" onClick={() => handleSelected("UseEffect1")}>
-      UseEffect1
+        UseEffect1
       </button>
       <button className="btn-w100" onClick={() => handleSelected("FetchDemo1")}>
-      FetchDemo1
+        Fetch Demo1
+      </button>
+      <button className="btn-w100" onClick={() => handleSelected("LiftingState")}>
+        LiftingState
       </button>
     </>
   );
