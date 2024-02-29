@@ -1,5 +1,6 @@
 import UserFormControlled from "../components/UserFormControlled";
 // import UsertableLif from "../components/UserTable";
+import "../liftingState.css"
 import { BaseProps } from "../types";
 
 import { users, User, getNextId } from "../data/data";
@@ -12,9 +13,12 @@ export default function LiftingState({ title }: liftType) {
   const [controlledUsers, setControlledUsers] = useState<User[]>(users);
   const [userToEdit, setUserToEdit] = useState<User | undefined>(undefined);
 
+
   function AddEditDeleteFunction(user: User, isDelete: boolean | undefined) {
     if (isDelete) {
       setControlledUsers([...controlledUsers].filter((oldUser) => oldUser.id != user.id));
+      console.log("deleting");
+      
     } else {
       const found = controlledUsers.find((entry) => user.id == entry.id);
       if (found) {
@@ -25,7 +29,8 @@ export default function LiftingState({ title }: liftType) {
         user.id = getNextId();
         controlledUsers.push(user);
       }
-
+      
+      
       setControlledUsers([...controlledUsers]);
     }
   }
@@ -37,6 +42,9 @@ export default function LiftingState({ title }: liftType) {
 
     setUserToEdit({ ...usr });
     // console.log("user to edit",userToEdit);
+    console.log("controlled users", controlledUsers);
+    // write a function to edit the user
+    
   }
 
   return (
