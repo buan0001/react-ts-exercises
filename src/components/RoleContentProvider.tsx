@@ -6,9 +6,13 @@ interface RoleContextType {
 }
 const RoleContext = createContext<RoleContextType>({ role: "", setRole: () => {} });
 
+
 export default function RoleContextProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState("anonymous");
-  return <RoleContext.Provider value={{ role, setRole }}>{children}</RoleContext.Provider>;
+  return (
+    <RoleContext.Provider value={{ role, setRole }}>
+    {children}
+    </RoleContext.Provider>)
 }
 
 export function useRole() {

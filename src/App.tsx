@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import "./liftingState.css";
 import Propsdemo from "./exercises/PropsDemo";
 import ListDemo from "./exercises/ListDemo";
 import FormUncontrolled from "./exercises/FormUncontrolled";
@@ -11,7 +12,6 @@ import FetchDemo1 from "./exercises/FetchDemo1";
 import EventDemo1 from "./exercises/EventDemo";
 import LiftingState from "./exercises/LiftingState";
 import ContextDemoApp from "./exercises/ContextDemo";
-
 
 export default function App() {
   const [selectedView, setSelectedView] = useState("info");
@@ -56,7 +56,7 @@ type ButtonProps = {
 };
 
 const Buttons = (props: ButtonProps) => {
-const { onSelected: handleSelected, /*btnStyle: btnStyle*/ } = props;
+  const { onSelected: handleSelected /*btnStyle: btnStyle*/ } = props;
   return (
     <>
       <button className="btn-w100" onClick={() => handleSelected("info")}>
