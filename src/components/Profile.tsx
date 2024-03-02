@@ -1,5 +1,6 @@
-import { BaseProps } from "../types";
-export default function Profile({ name, email, isActive, singleLine }: BaseProps) {
+type profileProps = {name:string, email:string, isActive:boolean, singleLine:boolean}
+
+export default function Profile({ name, email, isActive, singleLine }: profileProps) {
   return (
     <div>
       {singleLine ? (

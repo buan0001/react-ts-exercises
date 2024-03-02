@@ -16,11 +16,9 @@ export default function LiftingState({ title }: liftType) {
     if (isDelete) {
       setControlledUsers([...controlledUsers].filter((oldUser) => oldUser.id != user.id));
     } else {
-      const found = controlledUsers.find((entry) => user.id == entry.id);
-      if (found) {
-        for (const key in user) {
-          found[key] = user[key];
-        }
+      if (user.id) {
+        const index = controlledUsers.findIndex((oldUser) => oldUser.id === user.id);
+        controlledUsers[index] = user;
       } else {
         user.id = getNextId();
         controlledUsers.push(user);
